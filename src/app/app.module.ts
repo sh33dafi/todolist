@@ -4,16 +4,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpModule } from "@angular/http";
 
 import { AppComponent } from "./containers/app/app.component";
-import {TodoListComponent} from "./components/todo-list/todo-list.component";
-import {TodoItemComponent} from "./components/todo-item/todo-item.component";
-import {NewTodoItemComponent} from "./components/new-todo-item/new-todo-item.component";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TodoListComponent,
-    TodoItemComponent,
-    NewTodoItemComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
