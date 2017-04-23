@@ -23,8 +23,7 @@ export class TodoService {
   }
 
   public removeCompleted() {
-    this.todos$.next(
-      this.todos.filter(todo => !todo.isCompleted())
-    );
+    this.todos = this.todos.filter(todo => !todo.isCompleted());
+    this.todos$.next(this.todos);
   }
 }
