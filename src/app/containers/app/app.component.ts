@@ -21,7 +21,6 @@ export class AppComponent {
 
   constructor(private todoService: TodoService) {
     this.todos$ = this.todoService.todos$;
-    this.todos$.subscribe((l) => console.log(l));
   }
 
   public addTodo(todo: Todo) {
