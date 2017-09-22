@@ -9,19 +9,15 @@ export const ActionTypes = {
 
 export class AddTodoAction implements Action {
   type = ActionTypes.ADD_TODO;
-  payload: Readonly<Todo>;
 
-  constructor(todo: Todo) {
-    this.payload = todo;
+  constructor(readonly payload: Todo) {
   }
 }
 
 export class ToggleTodoAction implements Action {
   type = ActionTypes.TOGGLE_TODO;
-  payload: Readonly<Todo>;
 
-  constructor(todo: Todo) {
-    this.payload = todo;
+  constructor(readonly payload: Todo) {
   }
 }
 
