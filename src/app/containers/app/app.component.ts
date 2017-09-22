@@ -10,7 +10,6 @@ import {AddTodoAction, RemoveCompletedTodosAction, ToggleTodoAction} from "../..
   providers: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ngrx-store-log-monitor toggleCommand="ctrl-h" positionCommand="ctrl-m"></ngrx-store-log-monitor>
     <h1>Todos</h1>
     <new-todo-item (onAddTodo)="addTodo($event)"></new-todo-item>
     <button (click)="removeAllCompleted()">Remove all completed</button>
