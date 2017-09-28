@@ -5,17 +5,14 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 @Injectable()
 export class TodoService {
 
-  public todos$: BehaviorSubject<Todo[]>;
-  private todos: Todo[];
+  public todos: Todo[];
 
   constructor() {
     this.todos = [];
-    this.todos$ = new BehaviorSubject(this.todos);
   }
 
   public addTodo(todo: Todo): void {
     this.todos.push(todo);
-    this.todos$.next(this.todos);
   }
 
   public toggleComplete(todo: Todo) {
@@ -24,6 +21,5 @@ export class TodoService {
 
   public removeCompleted() {
     this.todos = this.todos.filter(todo => !todo.isCompleted());
-    this.todos$.next(this.todos);
   }
 }
