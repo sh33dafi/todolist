@@ -1,18 +1,19 @@
 import {Injectable} from "@angular/core";
 import {Todo} from "../model/Todo";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class TodoService {
 
-  public todos: Todo[];
+  public todos$: BehaviorSubject<Todo[]>;
 
   constructor() {
-    this.todos = [];
+    this.todos$ = new BehaviorSubject([]);
   }
 
   public addTodo(todo: Todo): void {
-    this.todos.push(todo);
+    this.todos$.next([...this.todos$.getValue(), todo]);
   }
 
   public toggleComplete(todo: Todo) {
@@ -20,6 +21,6 @@ export class TodoService {
   }
 
   public removeCompleted() {
-    this.todos = this.todos.filter(todo => !todo.isCompleted());
+    this.todos$.next(this.todos$.getValue().filter(todo => !todo.isCompleted()));
   }
 }

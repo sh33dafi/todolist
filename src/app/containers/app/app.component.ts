@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component} from "@angular/core";
 import {Todo} from "../../model/Todo";
 import {TodoService} from "../../services/todo.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: "app-root",
@@ -11,14 +12,16 @@ import {TodoService} from "../../services/todo.service";
     <h1>Todos</h1>
     <new-todo-item (onAddTodo)="addTodo($event)"></new-todo-item>
     <button (click)="removeAllCompleted()">Remove all completed</button>
-    <todo-list [todos]="todoService.todos"
+    <todo-list [todos]="todos$ | async"
                (onToggleComplete)="toggleComplete($event)"></todo-list>
   `
 })
 export class AppComponent {
 
+  public todos$: Observable<Todo[]>;
 
   constructor(private todoService: TodoService) {
+    this.todos$ = todoService.todos$;
   }
 
   public addTodo(todo: Todo) {
